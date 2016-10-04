@@ -1,2 +1,2 @@
-# Saltstack-Vagrant-Unbunt 16.04 LTS-Nginx-MySQL-PHP Demo
+# Saltstack-Vagrant-Ubuntu-Nginx-MySQL-PHP Demo
 
