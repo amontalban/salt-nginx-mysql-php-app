@@ -93,34 +93,50 @@ user@localhost:~/salt-nginx-mysql-php-app$ cd /etc/salt; mkdir base
 
 Copy SLS files:  
 
-user@localhost:~/salt-nginx-mysql-php-app$ cp -p *.sls /etc/salt/base
+user@localhost:~/salt-nginx-mysql-php-app/salt-sls-files$ cp -p *.sls /etc/salt/base
 
-Salt Master localost $ ifconfig -a (Determine host IP?)
+user@localhost:~/salt-nginx-mysql-php-app$ ifconfig -a (Determine host IP?)
 
 Ubuntu@Minion10:~$ sudo vim /etc/salt/minion
-Add: master “IP Address” Example: master 10.0.0.1
+
+Add: master “IP Address” Example: master X.X.X.X
+
 Ubuntu@Minion10:~$ sudo service restart salt-minion
-Salt Master localhost$ sudo salt-key ‘*’ -L
+
+user@localhost:/etc/salt
+
+ sudo salt-key ‘*’ -L
+
 Accepted Keys:
+
 Denied Keys:
+
 Unaccepted Keys:
+
 ubuntu-xenial.localdomain
+
 Rejected Keys:
 
 
+
 sudo salt-key ‘*’ -A
+
 The following keys are going to be accepted:
+
 Unaccepted Keys:
+
 ubuntu-xenial.localdomain
+
 Proceed? [n/Y] y
 
 Salt Master localhost $ sudo salt ‘*’ test.ping
+
 ubuntu-xenial.localdomain:
+
     True
 
-
-
 Salt Master LocalHost $ sudo vim /etc/master
+
 file_root:
   base: 
       - /etc/salt/base
