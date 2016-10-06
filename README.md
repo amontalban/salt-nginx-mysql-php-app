@@ -3,9 +3,13 @@
 Prerequisites: 
 
 The following need to be currently installed on your local system:
+
 Git	https://git-scm.com/
+
 Virtualbox	https://www.virtualbox.org/
+
 Vagrant	https://www.vagrantup.com/	
+
 Saltstack Master & Minion	https://repo.saltstack.com/
 
 
