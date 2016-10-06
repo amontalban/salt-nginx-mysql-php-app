@@ -82,7 +82,9 @@ ubuntu@minion10:~$ ps -ef | grep salt-minion
 Standard Output:
 
 root      1116     1  0 04:35 ?        00:00:00 /usr/bin/python /usr/bin/salt-minion
+
 root      1156  1116  0 04:35 ?        00:00:00 /usr/bin/python /usr/bin/salt-minion
+
 root      1166  1156  0 04:35 ?        00:00:00 /usr/bin/python /usr/bin/salt-minion
 
 On the localhost (salt-master) execute the following commands to create a base directory under /etc/salt and to copy the appropriate .sls files to the base directory.
