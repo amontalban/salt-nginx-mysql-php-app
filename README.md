@@ -16,23 +16,23 @@ Saltstack Master & Minion	https://repo.saltstack.com/
 Installation Instructions
 
 Open a Terminal Window
-cd /etc/salt; mkdir base
-
-Copy SLS files: 
-:~/salt-nginx-mysql-php-app$ cp -p *.sls /etc/salt/base
 
 Clone the repository
+
 $ sudo git clone https://github.com/scottdspangler/salt-nginx-mysql-php-app.git
+
 Change directories to the location of the repository
-$ :~/salt-nginx-mysql-php-app$
+
+user@localhost:~/salt-nginx-mysql-php-app$
 
 Execute the Vagrant executable
-$ sudo vagrant up
+
+user@localhost:~/salt-nginx-mysql-php-app$ sudo vagrant up
 The above command will provision a Ubuntu 16.04 LTS “Xenial64” Virtualbox VM and install Saltstack Minion and start the minion process.
 
 Execute the following commands to verify the VM was provisioned, that you can then login to the VM and that the Saltstack minion process is running.
 
-:~/salt-nginx-mysql-php-app$ sudo vagrant status
+user@localhost:~/salt-nginx-mysql-php-app$ sudo vagrant status
 Standard output: 
 Current machine states:
 
@@ -43,7 +43,7 @@ shut it down forcefully, or you can run `vagrant suspend` to simply
 suspend the virtual machine. In either case, to restart it again,
 simply run `vagrant up`.
 
-:~/salt-nginx-mysql-php-app$ sudo vagrant ssh minion10
+luser@ocalhost:~/salt-nginx-mysql-php-app$ sudo vagrant ssh minion10
 Standard Output: Welcome to Ubuntu 16.04.1 LTS (GNU/Linux 4.4.0-38-generic x86_64)
 
  * Documentation:  https://help.ubuntu.com
@@ -64,6 +64,12 @@ Standard Output:
 root      1116     1  0 04:35 ?        00:00:00 /usr/bin/python /usr/bin/salt-minion
 root      1156  1116  0 04:35 ?        00:00:00 /usr/bin/python /usr/bin/salt-minion
 root      1166  1156  0 04:35 ?        00:00:00 /usr/bin/python /usr/bin/salt-minion
+
+cd /etc/salt; mkdir base
+
+Copy SLS files: 
+:~/salt-nginx-mysql-php-app$ cp -p *.sls /etc/salt/base
+
 
 Salt Master localost $ ifconfig -a (Determine host IP?)
 
