@@ -28,12 +28,15 @@ user@localhost:~/salt-nginx-mysql-php-app$
 Execute the Vagrant executable
 
 user@localhost:~/salt-nginx-mysql-php-app$ sudo vagrant up
+
 The above command will provision a Ubuntu 16.04 LTS “Xenial64” Virtualbox VM and install Saltstack Minion and start the minion process.
 
 Execute the following commands to verify the VM was provisioned, that you can then login to the VM and that the Saltstack minion process is running.
 
 user@localhost:~/salt-nginx-mysql-php-app$ sudo vagrant status
+
 Standard output: 
+
 Current machine states:
 
 minion10                  running (virtualbox)
@@ -43,7 +46,8 @@ shut it down forcefully, or you can run `vagrant suspend` to simply
 suspend the virtual machine. In either case, to restart it again,
 simply run `vagrant up`.
 
-luser@ocalhost:~/salt-nginx-mysql-php-app$ sudo vagrant ssh minion10
+user@localhost:~/salt-nginx-mysql-php-app$ sudo vagrant ssh minion10
+
 Standard Output: Welcome to Ubuntu 16.04.1 LTS (GNU/Linux 4.4.0-38-generic x86_64)
 
  * Documentation:  https://help.ubuntu.com
