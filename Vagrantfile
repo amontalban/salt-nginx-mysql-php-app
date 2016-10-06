@@ -16,13 +16,13 @@ Vagrant.configure('2') do |config|
 
 
   # The Minion VM
-    config.vm.define :minion do |minion|
-    configure_proxy(minion)
-    minion.vm.box = vm_box
-    minion.vm.box_check_update = true
-    minion.vm.network :private_network, ip: '192.168.1.2'
-    minion.vm.hostname = 'minion'
-    minion.vm.provision :shell, path: "minion_bootstrap.sh"
+    config.vm.define :minion10 do |minion10|
+    configure_proxy(minion10)
+    minion10.vm.box = vm_box
+    minion10.vm.box_check_update = true
+    minion10.vm.network :private_network, ip: '192.168.1.10'
+    minion10.vm.hostname = 'minion10'
+    minion10.vm.provision :shell, path: "minion10_bootstrap.sh"
   end
 
 end
