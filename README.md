@@ -162,7 +162,8 @@ user@localhost:~/etc/salt/base$ cd /salt-nginx-mysql-php-app/PHPfiles
 
 user@localhost:~/salt-nginx-mysql-php-app/PHPfiles$ sudo salt-cp "*" empmulti.php info.php /var/www/html/
 
-
+Update info.php in repo
+Configure nginx, mysql, php, 
 
 Add: cp files from master to minion.
 Fix php script. 
