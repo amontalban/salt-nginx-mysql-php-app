@@ -89,7 +89,7 @@ On the localhost (salt-master) execute the following commands to create a base d
 
 user@localhost:~/salt-nginx-mysql-php-app$ cd /etc/salt; mkdir base
 
-Copy SLS files: 
+Copy SLS files:  
 
 user@localhost:~/salt-nginx-mysql-php-app$ cp -p *.sls /etc/salt/base
 
