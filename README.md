@@ -18,16 +18,17 @@ Copy SLS files:
 :~/salt-nginx-mysql-php-app$ cp -p *.sls /etc/salt/base
 
 Clone the repository
-$ sudo git clone 
+$ sudo git clone https://github.com/scottdspangler/salt-nginx-mysql-php-app.git
 Change directories to the location of the repository
-$ cd saltstack-vagrant-php-app-demo
+$ :~/salt-nginx-mysql-php-app$
+
 Execute the Vagrant executable
 $ sudo vagrant up
-The above command will provision a Ubuntu 16.04 LTS “Xenial64” Virtualbox VM and install Saltstack Minion and start the minion daemon process.
+The above command will provision a Ubuntu 16.04 LTS “Xenial64” Virtualbox VM and install Saltstack Minion and start the minion process.
 
-Execute the following commands to verify the VM was provisioned, you can then login to the VM and that the Saltstack minion process is running.
+Execute the following commands to verify the VM was provisioned, that you can then login to the VM and that the Saltstack minion process is running.
 
-$ sudo vagrant status
+:~/salt-nginx-mysql-php-app$ sudo vagrant status
 Standard output: 
 Current machine states:
 
@@ -38,10 +39,7 @@ shut it down forcefully, or you can run `vagrant suspend` to simply
 suspend the virtual machine. In either case, to restart it again,
 simply run `vagrant up`.
 
-
-
-
-Salt Master localhost $ sudo vagrant ssh minion10
+:~/salt-nginx-mysql-php-app$ sudo vagrant ssh minion10
 Standard Output: Welcome to Ubuntu 16.04.1 LTS (GNU/Linux 4.4.0-38-generic x86_64)
 
  * Documentation:  https://help.ubuntu.com
@@ -57,7 +55,6 @@ Get cloud support with Ubuntu Advantage Cloud Guest:
 Last login: Day  Month  Time Year from X.X.X.X
 ubuntu@minion10:~$ 
 
-
 $ ps -ef | grep salt-minion
 Standard Output:
 root      1116     1  0 04:35 ?        00:00:00 /usr/bin/python /usr/bin/salt-minion
@@ -65,6 +62,7 @@ root      1156  1116  0 04:35 ?        00:00:00 /usr/bin/python /usr/bin/salt-mi
 root      1166  1156  0 04:35 ?        00:00:00 /usr/bin/python /usr/bin/salt-minion
 
 Salt Master localost $ ifconfig -a (Determine host IP?)
+
 Ubuntu@Minion10:~$ sudo vim /etc/salt/minion
 Add: master “IP Address” Example: master 10.0.0.1
 Ubuntu@Minion10:~$ sudo service restart salt-minion
