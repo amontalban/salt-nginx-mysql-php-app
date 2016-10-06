@@ -17,9 +17,11 @@ Installation Instructions
 
 Open a Terminal Window
 
+Note: Please make sure you are in you home directory.
+
 Clone the repository
 
-$ sudo git clone https://github.com/scottdspangler/salt-nginx-mysql-php-app.git
+user@localhost:~$ sudo git clone https://github.com/scottdspangler/salt-nginx-mysql-php-app.git
 
 Change directories to the location of the repository
 
@@ -27,7 +29,9 @@ user@localhost:~/salt-nginx-mysql-php-app$
 
 Execute the Vagrant executable
 
-user@localhost:~/salt-nginx-mysql-php-app$ sudo vagrant up
+Note: During the provisioning of mininon10, a additional NIC is configured with a Private IP: 192.168.0.10
+
+user@localhost:~/salt-nginx-mysql-php-app$ sudo vagrant up 
 
 Bringing machine 'minion10' up with 'virtualbox' provider...
 
@@ -97,11 +101,15 @@ user@localhost:~/salt-nginx-mysql-php-app/salt-sls-files$ cp -p *.sls /etc/salt/
 
 user@localhost:~/salt-nginx-mysql-php-app$ ifconfig -a (Determine host IP?)
 
-Ubuntu@Minion10:~$ sudo vim /etc/salt/minion
+ubuntu@Minion10:~$ sudo vim /etc/salt/minion
 
-Add: master “IP Address” Example: master X.X.X.X
+Find near the top of the file # master: salt , uncomment the line and add: master X.X.X.X (where x.x.x.x is master IP)
 
-Ubuntu@Minion10:~$ sudo service restart salt-minion
+save file and exit:
+
+ubuntu@minion10:/etc/salt$ sudo systemctl restart salt-minion
+
+Execute the following commands on the localhost salt-master:
 
 user@localhost:/etc/salt
 
@@ -116,8 +124,6 @@ Unaccepted Keys:
 ubuntu-xenial.localdomain
 
 Rejected Keys:
-
-
 
 sudo salt-key ‘*’ -A
 
@@ -134,13 +140,28 @@ Salt Master localhost $ sudo salt ‘*’ test.ping
 ubuntu-xenial.localdomain:
 
     True
+    
+user@localhost:~/salt-nginx-mysql-php-app$ sudo vim /etc/salt/master
 
-Salt Master LocalHost $ sudo vim /etc/master
+Uncomment the following the lines below and add the SLS path to be (- /etc/salt/base)
 
 file_root:
   base: 
       - /etc/salt/base
 Note: proper syntax, each line in a YAML file is indented by 2 characters.
+
+user@localhost:~/etc/salt/base$
+
+The following command will install nginx, mysql-server, php, php-fpm, php-mysql, phpmyadmin and git on minion10.
+
+user@localhost:~/etc/salt/base$ sudo salt '*' state.highstate
+
+The following commands below will install the proper nginx configuration file, an PHP test info.php file and the PHP script on minion10.
+
+user@localhost:~/etc/salt/base$ cd /salt-nginx-mysql-php-app/PHPfiles
+
+user@localhost:~/salt-nginx-mysql-php-app/PHPfiles$ sudo salt-cp "*" empmulti.php info.php /var/www/html/
+
 
 
 Add: cp files from master to minion.
