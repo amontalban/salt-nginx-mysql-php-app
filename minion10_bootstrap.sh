@@ -6,12 +6,12 @@ sudo apt-get update
 apt-get install -y salt-minion
 #:sudo apt-get install -y debconf-utils
 
-cat <<EOF >/etc/salt/minion
-master: Enter IP address of Salt Master here 
-EOF
+#cat <<EOF >/etc/salt/minion
+#master: Enter IP address of Salt Master here 
+#EOF
 
 #cat <<EOF >>/etc/hosts
 #10.0.0.11 salt-master
 #EOF
 
-salt-minion -d
+service salt-minion start
