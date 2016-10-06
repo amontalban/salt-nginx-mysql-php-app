@@ -30,8 +30,11 @@ Execute the Vagrant executable
 user@localhost:~/salt-nginx-mysql-php-app$ sudo vagrant up
 
 Bringing machine 'minion10' up with 'virtualbox' provider...
+
 ==> minion10: Checking if box 'ubuntu/xenial64' is up to date...
+
 ==> minion10: Machine already provisioned. Run `vagrant provision` or use the `--provision`
+
 ==> minion10: flag to force provisioning. Provisioners marked to run always will still run.
 
 
@@ -51,6 +54,8 @@ The VM is running. To stop this VM, you can run `vagrant halt` to
 shut it down forcefully, or you can run `vagrant suspend` to simply
 suspend the virtual machine. In either case, to restart it again,
 simply run `vagrant up`.
+
+Open a second console window:
 
 user@localhost:~/salt-nginx-mysql-php-app$ sudo vagrant ssh minion10
 
