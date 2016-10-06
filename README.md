@@ -29,6 +29,12 @@ Execute the Vagrant executable
 
 user@localhost:~/salt-nginx-mysql-php-app$ sudo vagrant up
 
+Bringing machine 'minion10' up with 'virtualbox' provider...
+==> minion10: Checking if box 'ubuntu/xenial64' is up to date...
+==> minion10: Machine already provisioned. Run `vagrant provision` or use the `--provision`
+==> minion10: flag to force provisioning. Provisioners marked to run always will still run.
+
+
 The above command will provision a Ubuntu 16.04 LTS “Xenial64” Virtualbox VM and install Saltstack Minion and start the minion process.
 
 Execute the following commands to verify the VM was provisioned, that you can then login to the VM and that the Saltstack minion process is running.
