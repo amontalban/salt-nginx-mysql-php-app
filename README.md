@@ -1,6 +1,8 @@
 # Saltstack-Vagrant-Ubuntu-Nginx-MySQL-PHP Demo
 
-Prerequisites: The following need to be currently installed on your local system:
+Prerequisites: 
+
+The following need to be currently installed on your local system:
 Git	https://git-scm.com/
 Virtualbox	https://www.virtualbox.org/
 Vagrant	https://www.vagrantup.com/	
