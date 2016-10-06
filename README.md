@@ -14,7 +14,8 @@ Installation Instructions
 Open a Terminal Window
 cd /etc/salt; mkdir base
 
-Copy SLS files: cd /s cp -p *.sls /etc/salt/base
+Copy SLS files: 
+:~/salt-nginx-mysql-php-app$ cp -p *.sls /etc/salt/base
 
 Clone the repository
 $ sudo git clone 
