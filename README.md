@@ -387,6 +387,50 @@ data_load_time_diff
 
 00:01:27
 
+Verify the empmulti.php file is present in the /var/www/html directory.
+
+ubuntu@minion10:/var/www/html$ ls
+empmulti.php  index.nginx-debian.html  info.php
+
+
+Create a new user within the MySQL shell:
+
+ubuntu@minion10:/var/www/html$ sudo mysql
+
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+
+Your MySQL connection id is X
+
+Server version: 5.7.15-0ubuntu0.16.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2016, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+
+affiliates. Other names may be trademarks of their respective
+
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+
+mysql> CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';
+
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> GRANT ALL PRIVILEGES ON * . * TO 'newuser'@'localhost';
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> FLUSH PRIVILEGES;
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> \q
+
+Bye
+
+
 
 
 
