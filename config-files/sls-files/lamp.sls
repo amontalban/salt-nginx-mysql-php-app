@@ -14,14 +14,6 @@ php-fpm:
   pkg:
     - installed
 
-php-pear:
-  pkg:
-    - installed
-
 php-mysql:
-  pkg:
-    - installed
-
-phpmyadmin:
   pkg:
     - installed

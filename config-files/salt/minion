@@ -1,2 +1,0 @@
-# New /etc/salt/minion file to be copied from salt-master
-master: Enter Salt Master IP Address 
