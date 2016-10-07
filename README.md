@@ -70,9 +70,11 @@ Standard Output: Welcome to Ubuntu 16.04.1 LTS (GNU/Linux 4.4.0-38-generic x86_6
  * Support:        https://ubuntu.com/advantage
  
 Get cloud support with Ubuntu Advantage Cloud Guest:
+
  http://www.ubuntu.com/business/services/cloud
 
 0 packages can be updated.
+
 0 updates are security updates.
 
 Last login: Day  Month  Time Year from X.X.X.X
@@ -168,8 +170,11 @@ user@localhost:~/salt-nginx-mysql-php-app/config-files/PHPfiles$ sudo salt-cp "*
 Testing the Nginx Web Server:
 
 Ubuntu@Minion10:~$ ps -ef | grep nginx
+
 root      2540     1  0 05:43 ?        00:00:00 nginx: master process /usr/sbin/nginx -g daemon on; master_process on;
+
 www-data  2541  2540  0 05:43 ?        00:00:00 nginx: worker process
+
 www-data  2542  2540  0 05:43 ?        00:00:00 nginx: worker process
 
 Ubuntu@Minion10:~$ ifconfig -a
@@ -207,39 +212,55 @@ New password:
 Re-enter new password: 
 
 By default, a MySQL installation has an anonymous user,
+
 allowing anyone to log into MySQL without having to have
+
 a user account created for them. This is intended only for
+
 testing, and to make the installation go a bit smoother.
+
 You should remove them before moving into a production
+
 environment.
 
 Remove anonymous users? (Press y|Y for Yes, any other key for No) : y
 Success.
 
 Normally, root should only be allowed to connect from
+
 'localhost'. This ensures that someone cannot guess at
+
 the root password from the network.
 
 Disallow root login remotely? (Press y|Y for Yes, any other key for No) : y
+
 Success.
 
 By default, MySQL comes with a database named 'test' that
+
 anyone can access. This is also intended only for testing,
+
 and should be removed before moving into a production
+
 environment.
 
 
 Remove test database and access to it? (Press y|Y for Yes, any other key for No) : y
+
  - Dropping test database...
+ 
 Success.
 
  - Removing privileges on test database...
+ 
 Success.
 
 Reloading the privilege tables will ensure that all changes
+
 made so far will take effect immediately.
 
 Reload privilege tables now? (Press y|Y for Yes, any other key for No) : y
+
 Success.
 
 All done! 
@@ -430,6 +451,11 @@ mysql> \q
 
 Bye
 
+ubuntu@minion10:~$
+
+In a browser enter the following URL to display the results of listing employee's who are of "Male Gender", have a "Birth Date" of 1965-02-01 and a "Hire Date" of a date greater than 1990-01-01.
+
+192.168.1.10/empmulti.php
 
 
 
@@ -438,20 +464,8 @@ Bye
 
 
 
-PHPMyAdmin Configuration
-
-
-sudo ln -s /usr/share/phpmyadmin /usr/share/nginx/html
-
-
-sudo vagrant box update
-sudo vagrant status minion10
 
 
 
 
 
-
-
-
-PHPMyadmin : User: debian-sys-maint Password: testing
