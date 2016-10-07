@@ -97,7 +97,7 @@ user@localhost:~/salt-nginx-mysql-php-app$ cd /etc/salt; mkdir base
 
 Copy SLS files:  
 
-user@localhost:~/salt-nginx-mysql-php-app/salt-sls-files$ cp -p *.sls /etc/salt/base
+user@localhost:~/salt-nginx-mysql-php-app/config-files/sls-files$ sudo cp -p *.sls /etc/salt/base
 
 user@localhost:~/salt-nginx-mysql-php-app$ ifconfig -a (Determine host IP?)
 
@@ -158,9 +158,9 @@ user@localhost:~/etc/salt/base$ sudo salt '*' state.highstate
 
 The following commands below will install the proper nginx configuration file, an PHP test info.php file and the PHP script on minion10.
 
-user@localhost:~/etc/salt/base$ cd /salt-nginx-mysql-php-app/PHPfiles
+user@localhost:~/etc/salt/base$ cd /salt-nginx-mysql-php-app/config-files/PHPfiles
 
-user@localhost:~/salt-nginx-mysql-php-app/PHPfiles$ sudo salt-cp "*" empmulti.php info.php /var/www/html/
+user@localhost:~/salt-nginx-mysql-php-app/config-files/PHPfiles$ sudo salt-cp "*" empmulti.php info.php /var/www/html/
 
 Update info.php in repo
 Configure nginx, mysql, php, 
@@ -173,90 +173,37 @@ root      2540     1  0 05:43 ?        00:00:00 nginx: master process /usr/sbin/
 www-data  2541  2540  0 05:43 ?        00:00:00 nginx: worker process
 www-data  2542  2540  0 05:43 ?        00:00:00 nginx: worker process
 
- Ubuntu@Minion10:~$ifconfig -a
-enp0s3    Link encap:Ethernet  HWaddr 02:a0:3d:de:85:bf  
-          inet addr:10.0.2.15  Bcast:10.0.2.255  Mask:255.255.255.0
-          inet6 addr: fe80::a0:3dff:fede:85bf/64 Scope:Link
-          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-          RX packets:43431 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:15942 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:1000 
-          RX bytes:41424035 (41.4 MB)  TX bytes:1103098 (1.1 MB)
+ Ubuntu@Minion10:~$ ifconfig -a
+ 
+ Verify one of the NIC's is set to 192.168.1.10
 
-enp0s8    Link encap:Ethernet  HWaddr 08:00:27:3c:6c:24  
-          inet addr:192.168.1.10  Bcast:192.168.1.255  Mask:255.255.255.0
-          inet6 addr: fe80::a00:27ff:fe3c:6c24/64 Scope:Link
-          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-          RX packets:159 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:15 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:1000 
-          RX bytes:27984 (27.9 KB)  TX bytes:1226 (1.2 KB)
-
-lo        Link encap:Local Loopback  
-          inet addr:127.0.0.1  Mask:255.0.0.0
-          inet6 addr: ::1/128 Scope:Host
-          UP LOOPBACK RUNNING  MTU:65536  Metric:1
-          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:1 
-          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
 
 Test Nginx Webserver: Browser: http://192.168.1.10
 
-In your nginx site configuration (/etc/nginx/sites-available/default), modify the line in the server {} section and make sure the the specific lines are uncommented (No # at the beginning of each line of text).
-index index.html index.htm to index index.php index.html index.htm.
- root /var/www/html;
-
-        # Add index.php to the list if you are using PHP
-        index index.php index.html index.htm index.nginx-debian.html;
-
-        server_name localhost;
-
-        location / {
-                # First attempt to serve request as file, then
-                # as directory, then fall back to displaying a 404.
-                try_files $uri $uri/ =404;
-        }
-
-        # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
-
-        location ~ \.php$ {
-                include snippets/fastcgi-php.conf;
-                
-                ##With php7.0-cgi alone:
-                #fastcgi_pass 127.0.0.1:9000;
-                ##With php7.0-fpm:
-                fastcgi_pass unix:/run/php/php7.0-fpm.sock;
-        }
-
-#        deny access to .htaccess files, if Apache's document root
-#        concurs with nginx's one
-        
-        location ~ /\.ht {
-                deny all;
-        }       
-}
-
 MySQL Secure Installation
 
- Ubuntu@Minion10:~$ sudo mysql_secure_installation
-
+Ubuntu@Minion10:~$ sudo mysql_secure_installation
 
 Securing the MySQL server deployment.
 
 Connecting to MySQL using a blank password.
 
 VALIDATE PASSWORD PLUGIN can be used to test passwords
+
 and improve security. It checks the strength of password
+
 and allows the users to set only those passwords which are
+
 secure enough. Would you like to setup VALIDATE PASSWORD plugin?
 
 Press y|Y for Yes, any other key for No: n 
+
 Please set the password for root here.
 
 New password: 
 
 Re-enter new password: 
+
 By default, a MySQL installation has an anonymous user,
 allowing anyone to log into MySQL without having to have
 a user account created for them. This is intended only for
@@ -295,9 +242,79 @@ Success.
 
 All done! 
 
+Configure Nginx to Use the PHP Processor
+
+Make sure the /etc/nginx/sites-available/default files looks like the example below and that 
+
+Ubuntu@Minion10:~$ sudo vim /etc/nginx/sites-available/default
+
+/etc/nginx/sites-available/default
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
+    root /var/www/html;
+    index index.php index.html index.htm index.nginx-debian.html;
+
+    server_name server_domain_or_IP;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+}
+
+
+When you've made the above changes, you can save and close the file.
+
+Test your configuration file for syntax errors by typing:
+
+Ubuntu@Minion10:~$ sudo nginx -t
+
+If any errors are reported, go back and recheck your file before continuing.
+
+When you are ready, reload Nginx to make the necessary changes:
+
+Ubuntu@Minion10:~$ sudo systemctl reload nginx
+
+Create a PHP File to Test Configuration
+Your LEMP stack should now be completely set up. We can test it to validate that Nginx can correctly hand .php files off to our PHP processor.
+
+We can do this by creating a test PHP file in our document root. Open a new file called info.php within your document root in your text editor:
+
+Ubuntu@Minion10:~$ sudo vim /var/www/html/info.php
+
+Type or paste the following lines into the new file. This is valid PHP code that will return information about our server:
+
+/var/www/html/info.php
+
+<?php
+
+phpinfo();
+
+When you are finished, save and close the file.
+
+Now, you can visit this page in your web browser by visiting your server's domain name or public IP address followed by
+
+http://server_domain_or_IP/info.php
+You should see a web page that has been generated by PHP with information about your server:
+
+
+If you see a page with the following heading , you've set up PHP processing with Nginx successfully.
+
+PHP Version 7.0.8-0ubuntu0.16.04.3
+
 Clone Test Database from Github
 
- Ubuntu@Minion10:~$ sudo git clone  https://github.com/scottdspangler/test_db.git
+Ubuntu@Minion10:~$ sudo git clone  https://github.com/scottdspangler/test_db.git
 
 Cloning into 'test_db'...
 remote: Counting objects: 94, done.
