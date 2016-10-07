@@ -55,8 +55,11 @@ Current machine states:
 minion10                  running (virtualbox)
 
 The VM is running. To stop this VM, you can run `vagrant halt` to
+
 shut it down forcefully, or you can run `vagrant suspend` to simply
+
 suspend the virtual machine. In either case, to restart it again,
+
 simply run `vagrant up`.
 
 Open a second console window:
@@ -66,7 +69,9 @@ user@localhost:~/salt-nginx-mysql-php-app$ sudo vagrant ssh minion10
 Standard Output: Welcome to Ubuntu 16.04.1 LTS (GNU/Linux 4.4.0-38-generic x86_64)
 
  * Documentation:  https://help.ubuntu.com
+ 
  * Management:     https://landscape.canonical.com
+ 
  * Support:        https://ubuntu.com/advantage
  
 Get cloud support with Ubuntu Advantage Cloud Guest:
@@ -93,7 +98,9 @@ root      1156  1116  0 04:35 ?        00:00:00 /usr/bin/python /usr/bin/salt-mi
 
 root      1166  1156  0 04:35 ?        00:00:00 /usr/bin/python /usr/bin/salt-minion
 
-On the localhost (salt-master) execute the following commands to create a base directory under /etc/salt and to copy the appropriate .sls files to the base directory.
+On the localhost (salt-master) execute the following commands to create a base directory under /etc/salt and to copy the
+
+appropriate .sls files to the base directory.
 
 user@localhost:~/salt-nginx-mysql-php-app$ cd /etc/salt; mkdir base
 
@@ -113,9 +120,9 @@ ubuntu@minion10:/etc/salt$ sudo systemctl restart salt-minion
 
 Execute the following commands on the localhost salt-master:
 
-user@localhost:/etc/salt
+user@localhost:/etc/salt$
 
- sudo salt-key ‘*’ -L
+user@localhost:/etc/salt$ sudo salt-key ‘*’ -L
 
 Accepted Keys:
 
@@ -453,7 +460,9 @@ Bye
 
 ubuntu@minion10:~$
 
-In a browser enter the following URL to display the results of listing employee's who are of "Male Gender", have a "Birth Date" of 1965-02-01 and a "Hire Date" of a date greater than 1990-01-01.
+In a browser enter the following URL to display the results of listing employee's who are of "Male Gender", have a "Birth
+
+Date" of 1965-02-01 and a "Hire Date" of a date greater than 1990-01-01.
 
 192.168.1.10/empmulti.php
 
