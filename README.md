@@ -31,7 +31,7 @@ Execute the Vagrant executable
 
 Note: During the provisioning of mininon10, a additional NIC is configured with a Private IP: 192.168.0.10
 
-user@localhost:~/salt-nginx-mysql-php-app$ sudo vagrant up 
+user@localhost:~/salt-nginx-mysql-php-app$ sudo vagrant up minion10
 
 Bringing machine 'minion10' up with 'virtualbox' provider...
 
