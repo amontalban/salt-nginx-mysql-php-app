@@ -160,25 +160,24 @@ The following commands below will install the proper nginx configuration file, a
 
 user@localhost:~/etc/salt/base$ cd /salt-nginx-mysql-php-app/config-files/PHPfiles
 
-user@localhost:~/salt-nginx-mysql-php-app/config-files/PHPfiles$ sudo salt-cp "*" empmulti.php info.php /var/www/html/
+user@localhost:~/salt-nginx-mysql-php-app/config-files/PHPfiles$ sudo salt-cp "*" empmulti.php info.php /var/www/html/ 
 
-Update info.php in repo
-Configure nginx, mysql, php, 
+Testing the Nginx Web Server:
 
-Add: cp files from master to minion.
-Fix php script. 
-
- Ubuntu@Minion10:~$ ps -ef | grep nginx
+Ubuntu@Minion10:~$ ps -ef | grep nginx
 root      2540     1  0 05:43 ?        00:00:00 nginx: master process /usr/sbin/nginx -g daemon on; master_process on;
 www-data  2541  2540  0 05:43 ?        00:00:00 nginx: worker process
 www-data  2542  2540  0 05:43 ?        00:00:00 nginx: worker process
 
- Ubuntu@Minion10:~$ ifconfig -a
+Ubuntu@Minion10:~$ ifconfig -a
  
- Verify one of the NIC's is set to 192.168.1.10
-
+Verify one of the NIC's is set to 192.168.1.10
 
 Test Nginx Webserver: Browser: http://192.168.1.10
+
+Nginx default page
+
+If you see the above page, you have successfully installed Nginx.
 
 MySQL Secure Installation
 
@@ -323,36 +322,73 @@ If you see a page with the following heading , you've set up PHP processing with
 
 PHP Version 7.0.8-0ubuntu0.16.04.3
 
+Verify you are in the home directory on the minion.
+
+ubuntu@minion10:/etc/salt$ cd ~
+
+ubuntu@minion10:~$ pwd
+
+/home/ubuntu
+
 Clone Test Database from Github
 
 Ubuntu@Minion10:~$ sudo git clone  https://github.com/scottdspangler/test_db.git
 
 Cloning into 'test_db'...
+
 remote: Counting objects: 94, done.
+
 remote: Total 94 (delta 0), reused 0 (delta 0), pack-reused 94
+
 Unpacking objects: 100% (94/94), done.
+
 Checking connectivity... done.
 
- Ubuntu@Minion10:~$ cd test_db
- Ubuntu@Minion10:~$ sudo mysql < employees_partitioned.sql
+Ubuntu@Minion10:~$ cd test_db
+
+Ubuntu@Minion10:~$ sudo mysql < employees_partitioned.sql
+
 INFO
+
 CREATING DATABASE STRUCTURE
+
 INFO
+
 storage engine: InnoDB
+
 INFO
+
 LOADING departments
+
 INFO
+
 LOADING employees
+
 INFO
+
 LOADING dept_emp
+
 INFO
+
 LOADING dept_manager
+
 INFO
+
 LOADING titles
+
 INFO
+
 LOADING salaries
+
 data_load_time_diff
+
 00:01:27
+
+
+
+
+
+
 
 
 PHPMyAdmin Configuration
