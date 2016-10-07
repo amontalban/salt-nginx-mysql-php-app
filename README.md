@@ -146,8 +146,11 @@ user@localhost:~/salt-nginx-mysql-php-app$ sudo vim /etc/salt/master
 Uncomment the following the lines below and add the SLS path to be (- /etc/salt/base)
 
 file_root:
+
   base: 
+  
       - /etc/salt/base
+      
 Note: proper syntax, each line in a YAML file is indented by 2 characters.
 
 user@localhost:~/etc/salt/base$
