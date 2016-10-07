@@ -464,7 +464,8 @@ In a browser enter the following URL to display the results of listing employee'
 
 Date" of 1965-02-01 and a "Hire Date" of a date greater than 1990-01-01.
 
-192.168.1.10/empmulti.php
+http://192.168.1.10/empmulti.php
+
 
 
 
