@@ -164,7 +164,7 @@ Note: proper syntax, each line in a YAML file is indented by 2 characters.
 
 user@localhost:~/etc/salt/base$
 
-The following command will install nginx, mysql-server, php, php-fpm, php-mysql, phpmyadmin and git on minion10.
+The following command will install nginx, mysql-server, php, php-fpm, php-mysql, and git on minion10.
 
 user@localhost:~/etc/salt/base$ sudo salt '*' state.highstate
 
