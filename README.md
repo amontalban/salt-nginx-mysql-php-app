@@ -327,23 +327,7 @@ Your LEMP stack should now be completely set up. We can test it to validate that
 
 our PHP processor.
 
-We can do this by creating a test PHP file in our document root. Open a new file called info.php within your document root
-
-in your text editor:
-
-Ubuntu@Minion10:~$ sudo vim /var/www/html/info.php
-
-Type or paste the following lines into the new file. This is valid PHP code that will return information about our server:
-
-/var/www/html/info.php
-
-<?php
-
-phpinfo();
-
-When you are finished, save and close the file.
-
-Now, you can visit this page in your web browser by visiting your server's domain name or public IP address followed by
+Now, you can visit this page in your web browser:
 
 http://server_domain_or_IP/info.php
 
@@ -418,12 +402,14 @@ data_load_time_diff
 Verify the empmulti.php file is present in the /var/www/html directory.
 
 ubuntu@minion10:/var/www/html$ ls
+
 empmulti.php  index.nginx-debian.html  info.php
 
 
 Create a new user within the MySQL shell:
 
 ubuntu@minion10:/var/www/html$ sudo mysql
+
 
 Welcome to the MySQL monitor.  Commands end with ; or \g.
 
@@ -442,6 +428,9 @@ owners.
 Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
 
+mysql>
+
+
 mysql> CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';
 
 Query OK, 0 rows affected (0.02 sec)
@@ -457,6 +446,7 @@ Query OK, 0 rows affected (0.01 sec)
 mysql> \q
 
 Bye
+
 
 ubuntu@minion10:~$
 
