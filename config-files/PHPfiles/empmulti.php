@@ -1,6 +1,4 @@
-<?php
-//Step1
-$db = mysqli_connect('localhost','debian-sys-maint','G@lfer53!','employees')
+qli_connect('localhost','newuser','password','employees')
 or die('Error connecting to MySQL server.');
 ?>
 
@@ -15,8 +13,8 @@ or die('Error connecting to MySQL server.');
 <?php
 
 $query  = "SELECT * FROM employees WHERE gender='M';";
-$query  = "SELECT birth_date FROM employees WHERE birth_date='1965-02-01'";
-
+$query .= "SELECT * FROM employees WHERE birth_date='1965-02-01'";
+$query .= "SELECT * FROM employees WHERE hire_date>'1990-01-01'";
 $result = mysqli_query($db, $query);
 $row = mysqli_fetch_array($result);
 
@@ -42,3 +40,4 @@ if ($db->multi_query($query)) {
 /* close connection */
 $db->close();
 ?>
+
