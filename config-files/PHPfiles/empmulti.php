@@ -1,4 +1,5 @@
-qli_connect('localhost','newuser','password','employees')
+<?php
+$db = mysqli_connect('localhost','newuser','password','employees')
 or die('Error connecting to MySQL server.');
 ?>
 
